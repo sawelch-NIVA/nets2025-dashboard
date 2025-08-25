@@ -501,7 +501,7 @@ server <- function(input, output, session) {
   output$download_8 <- downloadHandler(
     filename = "2025_NETS_AEP_Poster.pdf",
     content = function(file) {
-      file.copy("www/pdf/2025_NETS_AEP_Poster.pdf", file)
+      file.copy("pdf/2025_NETS_AEP_Poster.pdf", file)
     },
     contentType = "application/pdf"
   )
