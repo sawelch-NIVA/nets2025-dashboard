@@ -84,22 +84,11 @@ niva_presentations <- data.frame(
     NA,
     NA,
     NA,
-    "pdf/2025_NETS_AEP_poster.pdf"
+    "www/pdf/2025_NETS_AEP_poster.pdf"
   ),
   stringsAsFactors = FALSE
 )
 
-# Session chairs data
-session_chairs <- data.frame(
-  name = c("Knut Erik Tollefsen", "Sam Welch"),
-  email = c("knut.erik.tollefsen@niva.no", "sam.welch@niva.no"),
-  session = c(
-    "Session 1: Chemical Pollution and Ecosystem Health",
-    "Session 3: Risk Assessment and Management"
-  ),
-  cochair = c("Elin Sørus", "Hans-Christian Teien"),
-  stringsAsFactors = FALSE
-)
 
 # ============================================================================
 # UI DEFINITION
@@ -273,7 +262,7 @@ ui <- page_fluid(
   br(),
   br(),
 
-  h2("Our Funders", class = "mb-4"),
+  h2("Projects", class = "mb-4"),
 
   # Funder logos section
   div(
@@ -299,18 +288,8 @@ ui <- page_fluid(
       div(
         class = "d-flex flex-column align-items-center",
         tags$img(
-          src = "www/expect-logo.png",
+          src = "expect-logo.png",
           alt = "EXPECT Logo",
-          style = "max-height: 60px; max-width: 180px; height: auto; width: auto; margin-bottom: 10px;"
-        )
-      ),
-
-      # Additional EXPECT logos
-      div(
-        class = "d-flex flex-column align-items-center",
-        img(
-          src = "expect-eu.png",
-          alt = "EXPECT EU Logo",
           style = "max-height: 60px; max-width: 180px; height: auto; width: auto; margin-bottom: 10px;"
         )
       ),
@@ -321,15 +300,6 @@ ui <- page_fluid(
         img(
           src = "niva-logo.png",
           alt = "NIVA Logo",
-          style = "max-height: 60px; max-width: 180px; height: auto; width: auto; margin-bottom: 10px;"
-        )
-      ),
-
-      div(
-        class = "d-flex flex-column align-items-center",
-        img(
-          src = "niva-en.png",
-          alt = "NIVA English Logo",
           style = "max-height: 60px; max-width: 180px; height: auto; width: auto; margin-bottom: 10px;"
         )
       )
@@ -376,6 +346,8 @@ ui <- page_fluid(
 # ============================================================================
 
 server <- function(input, output, session) {
+  print(getwd())
+
   # Static download handlers for each presentation
 
   # 1. Morten Jartun
@@ -501,7 +473,7 @@ server <- function(input, output, session) {
   output$download_8 <- downloadHandler(
     filename = "2025_NETS_AEP_Poster.pdf",
     content = function(file) {
-      file.copy("pdf/2025_NETS_AEP_Poster.pdf", file)
+      file.copy("www/pdf/2025_NETS_AEP_Poster.pdf", file)
     },
     contentType = "application/pdf"
   )
@@ -511,4 +483,5 @@ server <- function(input, output, session) {
 # RUN APPLICATION
 # ============================================================================
 
-shinyApp(ui = ui, server = server)
+app <- shinyApp(ui = ui, server = server)
+runApp(app)
