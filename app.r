@@ -29,7 +29,10 @@ ui <- page_fluid(
     heading_font = "Sarabun, sans-serif"
   ),
   tags$style(
-    HTML(".bslib-gap-spacing {gap: 0px !important;}")
+    HTML(
+      "@import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
+    .bslib-gap-spacing {gap: 0px !important;}"
+    )
   ),
 
   title = "NIVA at NETS 2025",
@@ -208,7 +211,7 @@ ui <- page_fluid(
   br(),
 
   # Projects section ----
-  h2("Projects", class = "mb-4"),
+  h2("Funding Projects", class = "mb-4"),
 
   # Funder logos section ----
   div(
@@ -218,18 +221,25 @@ ui <- page_fluid(
     # First row: PARC logo
     layout_column_wrap(
       width = "300px",
-      img(
-        src = "logo/parc-logo.png",
-        alt = "PARC Logo",
-        style = "max-width: 400px; margin: auto auto;"
+      a(
+        href = "https://www.eu-parc.eu/",
+        target = "_blank",
+        img(
+          src = "logo/parc-logo.png",
+          alt = "PARC Logo",
+          style = "max-width: 400px; margin: auto auto;"
+        )
       ),
 
       # EXPECT logo
-      img(
-        src = "logo/expect-logo.png",
-        alt = "EXPECT Logo",
-        style = "max-width: 400px; margin: auto auto;",
-        onerror = "this.style.display='none'"
+      a(
+        href = "https://www.niva.no/en/projectweb/expect",
+        target = "_blank",
+        img(
+          src = "logo/expect-logo.png",
+          alt = "EXPECT Logo",
+          style = "max-width: 400px; margin: auto auto;"
+        )
       )
     )
   ),
@@ -238,24 +248,18 @@ ui <- page_fluid(
   div(
     class = "text-center text-muted mt-5 pt-4",
     style = "border-top: 1px solid #dee2e6;",
-    img(
-      src = "logo/niva-logo.png",
-      alt = "NIVA Logo",
-      style = "max-width: 300px; margin: 0px auto;"
-    ),
     p(
-      "This is not the official website of the Norwegian Institute for Water Research (NIVA).",
+      "Click below to visit the Norwegian Institute for Water Research (NIVA)'s official website.",
       class = "mb-1"
     ),
-    p(
-      "Please visit ",
-      tags$a(
-        "www.niva.no",
-        href = "https://www.niva.no",
-        target = "_blank",
-        class = "text-decoration-none"
-      ),
-      class = "mb-0"
+    a(
+      href = "https://www.niva.no",
+      target = "_blank",
+      img(
+        src = "logo/niva-logo.png",
+        alt = "NIVA Logo",
+        style = "max-width: 300px; margin: 0px auto;"
+      )
     )
   )
 )
@@ -269,9 +273,9 @@ server <- function(input, output, session) {
 
   # 1. Morten Jartun (Oral - no PDF)
   output$download_1 <- downloadHandler(
-    filename = "placeholder.pdf",
+    filename = "2025_NETS_SpecimenBank_Presensation",
     content = function(file) {
-      file.copy("www/pdf/placeholder.pdf", file)
+      file.copy("www/pdf/Jartun_SpecimenBank 2025.pdf", file)
     },
     contentType = "application/pdf"
   )
