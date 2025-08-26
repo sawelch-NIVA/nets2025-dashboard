@@ -280,7 +280,7 @@ server <- function(input, output, session) {
   output$download_2 <- downloadHandler(
     filename = "2025_NETS_PlasticLeach_Presentation.pdf",
     content = function(file) {
-      file.copy("www/pdf/2025_NETS_PlasticLeach_Presentation.pdf", file)
+      file.copy("www/pdf/placeholder.pdf", file)
     },
     contentType = "application/pdf"
   )
