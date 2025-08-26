@@ -54,7 +54,8 @@ ui <- page_fluid(
 
   # Presentation cards using layout_column_wrap for responsive design ----
   layout_column_wrap(
-    width = 1 / 2,
+    heights_equal = "row",
+    width = "500px",
     !!!lapply(1:nrow(niva_presentations), function(i) {
       pres <- niva_presentations[i, ]
 
@@ -120,7 +121,7 @@ ui <- page_fluid(
                 img(
                   src = paste0("preview/", pres$preview_image),
                   alt = paste("Preview of", pres$title),
-                  style = "width: 100%; max-height: 800px; object-fit: contain; border: 2px solid #dee2e6; border-radius: 4px;",
+                  style = "width: 100%; max-height: 800px; object-fit: contain; border: 2px solid #dee2e6; border-radius: 4px; margin: auto;",
                   title = "Click to download PDF"
                 ),
                 onclick = if (!is.na(pres$pdf_file)) {
@@ -267,61 +268,85 @@ server <- function(input, output, session) {
   # Static download handlers for each presentation ----
 
   # 1. Morten Jartun (Oral - no PDF)
-  # No download handler needed for oral presentation
+  output$download_1 <- downloadHandler(
+    filename = "placeholder.pdf",
+    content = function(file) {
+      file.copy("www/pdf/placeholder.pdf", file)
+    },
+    contentType = "application/pdf"
+  )
 
-  # 2. Walter Zobl (Oral - no PDF)
-  # No download handler needed for oral presentation
+  # 2. Walter Zobl (Oral PlasticLeach)
+  output$download_2 <- downloadHandler(
+    filename = "2025_NETS_PlasticLeach_Presentation.pdf",
+    content = function(file) {
+      file.copy("www/pdf/2025_NETS_PlasticLeach_Presentation.pdf", file)
+    },
+    contentType = "application/pdf"
+  )
 
   # 3. Knut Erik Tollefsen (halibut PBPK poster)
   output$download_3 <- downloadHandler(
+    filename = "placeholder.pdf",
+    content = function(file) {
+      file.copy("www/pdf/STOP_presentation_Tollefsen_final.pdf", file)
+    },
+    contentType = "application/pdf"
+  )
+
+  # 4. Knut Erik Tollefsen (halibut PBPK poster)
+  output$download_4 <- downloadHandler(
     filename = "halibut_PBPK_model_poster_Tollefsen_final.pdf",
     content = function(file) {
-      file.copy("pdf/halibut_PBPK_model_poster_Tollefsen_final.pdf", file)
+      file.copy("www/pdf/halibut_PBPK_model_poster_Tollefsen_final.pdf", file)
     },
     contentType = "application/pdf"
   )
 
-  # 4. Li Xie (molting disruption poster)
-  output$download_4 <- downloadHandler(
+  # 5. Li Xie (molting disruption poster)
+  output$download_5 <- downloadHandler(
     filename = "cfi_molting disruption_poster_Tollefsen_final.pdf",
     content = function(file) {
-      file.copy("pdf/cfi_molting disruption_poster_Tollefsen_final.pdf", file)
+      file.copy(
+        "www/pdf/cfi_molting disruption_poster_Tollefsen_final.pdf",
+        file
+      )
     },
     contentType = "application/pdf"
   )
 
-  # 5. Sam A. Welch (eData poster)
-  output$download_5 <- downloadHandler(
+  # 6. Sam A. Welch (eData poster)
+  output$download_6 <- downloadHandler(
     filename = "SAW_eData_Poster_NETS.pdf",
     content = function(file) {
-      file.copy("pdf/SAW_eData_Poster_NETS.pdf", file)
+      file.copy("www/pdf/SAW_eData_Poster_NETS.pdf", file)
     },
     contentType = "application/pdf"
   )
 
-  # 6. Knut Erik Tollefsen (qData poster)
-  output$download_6 <- downloadHandler(
+  # 7. Knut Erik Tollefsen (qData poster)
+  output$download_7 <- downloadHandler(
     filename = "qData_poster_tollefsen_final.pdf",
     content = function(file) {
-      file.copy("pdf/qData_poster_tollefsen_final.pdf", file)
+      file.copy("www/pdf/qData_poster_tollefsen_final.pdf", file)
     },
     contentType = "application/pdf"
   )
 
-  # 7. Li Xie (AOP diuron poster)
-  output$download_7 <- downloadHandler(
+  # 8. Li Xie (AOP diuron poster)
+  output$download_8 <- downloadHandler(
     filename = "AOP diuron_Poster_LIX_PARC Template_Final.pdf",
     content = function(file) {
-      file.copy("pdf/AOP diuron_Poster_LIX_PARC Template_Final.pdf", file)
+      file.copy("www/pdf/AOP diuron_Poster_LIX_PARC Template_Final.pdf", file)
     },
     contentType = "application/pdf"
   )
 
-  # 8. Sam A. Welch (AEP poster)
-  output$download_8 <- downloadHandler(
+  # 9. Sam A. Welch (AEP poster)
+  output$download_9 <- downloadHandler(
     filename = "SAW_AEP_Poster_NETS.pdf",
     content = function(file) {
-      file.copy("pdf/SAW_AEP_Poster_NETS.pdf", file)
+      file.copy("www/pdf/SAW_AEP_Poster_NETS.pdf", file)
     },
     contentType = "application/pdf"
   )
