@@ -168,7 +168,7 @@ ui <- page_fluid(
           # Session and time info ----
           p(
             strong("Session: "),
-            gsub("^Session \\d+: ", "", pres$session),
+            gsub("^Session", "", pres$session),
             class = "small mb-2"
           ),
           p(strong("Time: "), pres$day_time, class = "small mb-2"),
@@ -285,9 +285,9 @@ server <- function(input, output, session) {
     contentType = "application/pdf"
   )
 
-  # 3. Knut Erik Tollefsen (halibut PBPK poster)
+  # 3. Knut Erik Tollefsen (STOP presentation)
   output$download_3 <- downloadHandler(
-    filename = "placeholder.pdf",
+    filename = "STOP_presentation_Tollefsen_final.pdf",
     content = function(file) {
       file.copy("www/pdf/STOP_presentation_Tollefsen_final.pdf", file)
     },
@@ -303,14 +303,11 @@ server <- function(input, output, session) {
     contentType = "application/pdf"
   )
 
-  # 5. Li Xie (molting disruption poster)
+  # 5. Li Xie (PARC MOLTDISTRUPT poster)
   output$download_5 <- downloadHandler(
-    filename = "cfi_molting disruption_poster_Tollefsen_final.pdf",
+    filename = "PARC_MOLTDISTRUPT_Li Xie_NIVA.pdf",
     content = function(file) {
-      file.copy(
-        "www/pdf/cfi_molting disruption_poster_Tollefsen_final.pdf",
-        file
-      )
+      file.copy("www/pdf/PARC_MOLTDISTRUPT_Li Xie_NIVA.pdf", file)
     },
     contentType = "application/pdf"
   )
@@ -347,6 +344,15 @@ server <- function(input, output, session) {
     filename = "SAW_AEP_Poster_NETS.pdf",
     content = function(file) {
       file.copy("www/pdf/SAW_AEP_Poster_NETS.pdf", file)
+    },
+    contentType = "application/pdf"
+  )
+
+  # 10. Knut Erik Tollefsen (CompTox poster)
+  output$download_10 <- downloadHandler(
+    filename = "CompTox_poster_tollefsen_final.pdf",
+    content = function(file) {
+      file.copy("www/pdf/CompTox_poster_tollefsen_final.pdf", file)
     },
     contentType = "application/pdf"
   )
