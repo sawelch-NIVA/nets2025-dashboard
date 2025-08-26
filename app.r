@@ -273,7 +273,7 @@ server <- function(input, output, session) {
 
   # 1. Morten Jartun (Oral - no PDF)
   output$download_1 <- downloadHandler(
-    filename = "2025_NETS_SpecimenBank_Presensation",
+    filename = "2025_NETS_SpecimenBank_Presentation.pdf",
     content = function(file) {
       file.copy("www/pdf/Jartun_SpecimenBank 2025.pdf", file)
     },
