@@ -240,6 +240,13 @@ ui <- page_fluid(
           alt = "EXPECT Logo",
           style = "max-width: 400px; margin: auto auto;"
         )
+      ),
+
+      # EXPECT logo
+      a(
+        "NCTP",
+        href = "https://www.niva.no/en/featured-pages/nctp",
+        target = "_blank"
       )
     )
   ),
