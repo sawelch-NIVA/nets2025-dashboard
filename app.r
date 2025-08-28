@@ -244,9 +244,10 @@ ui <- page_fluid(
 
       # EXPECT logo
       a(
-        "NCTP",
+        "NIVA Computational Toxicology Program",
         href = "https://www.niva.no/en/featured-pages/nctp",
-        target = "_blank"
+        target = "_blank",
+        style = "font-size: 24px;"
       )
     )
   ),
@@ -291,7 +292,7 @@ server <- function(input, output, session) {
   output$download_2 <- downloadHandler(
     filename = "2025_NETS_PlasticLeach_Presentation.pdf",
     content = function(file) {
-      file.copy("www/pdf/placeholder.pdf", file)
+      file.copy("www/pdf/WAS_PlasticLeach.pdf", file)
     },
     contentType = "application/pdf"
   )
